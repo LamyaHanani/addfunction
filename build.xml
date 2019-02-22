@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<project name ="lamya" default ="compile" >
-<property name = "src.java.dir" location="./src/lamya/sp"/>
-<property name = "src.test.dir" location="./src/lamya"/>
 
-<property name = "result.dir" location="./target"/>
-<property name = "result.javaclasses.dir" location="${result.dir}/classes"/>
-<property name = "result.testclasses.dir" location="${result.dir}/testclasses"/>
-<property name = "result.jar.file" location="./myproduct.jar"/>
-
-
-<target name ="compile">
-<mkdir dir= "${src.javaclasses.dir}"/>
-<javac srcdir="${src.java.dir} " destdir="${result.javaclasses.dir}" debug="true" includeantruntime="false">
-</javac>
+<project default ="run" name="addproject">
+<target name="run" depends="compile">
+<java classname="lamya.sp">
+<classpath path="staging"/>
+</java>
 </target>
-<target name ="jar" depends="compile">
-   <jar destfile="${result.jar.file}">
-    <fileset dir="${result.javaclasses.dir}">
-</fileset>
-</jar>
+<target name="compile">
+<javac  includeantruntime="false" srcdir="./src"  destdir="staging" />
 </target>
+
+
 </project> 
-
-
 
 
